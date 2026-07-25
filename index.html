@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Happy Birthday 🎂</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 
-<title>Happy Birthday JIJU ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
-
 <body>
 
-<div id="terminal">
+<div class="stars"></div>
 
-<pre id="output"></pre>
+<div class="container">
+
+    <h1>🎉 Happy Birthday 🎉</h1>
+
+    <h2>❤️ For My Jiju ❤️</h2>
+
+    <button id="celebrateBtn">
+        🎂 Celebrate
+    </button>
+
+    <div id="message" class="hidden">
+
+        <pre id="ascii">
+
+PASTE YOUR ASCII ART HERE
+(Everything inside mainArt from your Python file.)
+
+        </pre>
+
+    </div>
 
 </div>
 
-<audio id="music" autoplay loop>
-    <source src="HappyBirthday.mp3" type="audio/mpeg">
+<audio id="music" loop>
+    <source src="birthday.mp3" type="audio/mpeg">
 </audio>
 
 <script src="script.js"></script>
