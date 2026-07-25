@@ -22,13 +22,6 @@ const music =
 document.getElementById("birthdayMusic");
 
 
-const playBtn =
-document.getElementById("playMusic");
-
-
-const pauseBtn =
-document.getElementById("pauseMusic");
-
 
 const terminalText =
 document.getElementById("terminalText");
@@ -107,25 +100,6 @@ window.addEventListener(
 // MUSIC CONTROLS
 // ================================
 
-
-
-playBtn.onclick=()=>{
-
-
-    music.play();
-
-
-};
-
-
-
-pauseBtn.onclick=()=>{
-
-
-    music.pause();
-
-
-};
 
 
 
