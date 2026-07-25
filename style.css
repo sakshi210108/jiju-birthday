@@ -52,55 +52,9 @@ body {
 ========================================= */
 
 
-.music-panel {
-
-    position: fixed;
-
-    top: 20px;
-    right: 20px;
-
-    z-index: 1000;
-
-    display: flex;
-
-    gap: 10px;
-
-}
 
 
-.music-panel button,
-#screenshotBtn,
-#openGift {
 
-
-    border: none;
-
-    padding: 12px 20px;
-
-    border-radius: 30px;
-
-    cursor: pointer;
-
-    background: rgba(255,255,255,0.15);
-
-    color:white;
-
-    backdrop-filter: blur(10px);
-
-    transition:0.3s;
-
-}
-
-
-.music-panel button:hover,
-#screenshotBtn:hover,
-#openGift:hover {
-
-    transform: scale(1.08);
-
-    background: rgba(255,255,255,0.35);
-
-}
 
 
 
