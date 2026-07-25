@@ -10,6 +10,13 @@ const colors = [
     "#ffffff"
 ];
 
+// Start music
+window.onload = () => {
+    const music = document.getElementById("music");
+    music.play().catch(() => {});
+};
+
+// Load ASCII art
 fetch("art.txt")
 .then(response => response.text())
 .then(text => {
@@ -18,19 +25,19 @@ fetch("art.txt")
 
     function type() {
 
-        // Type 20 characters every frame
-        for (let j = 0; j < 20 && i < text.length; j++) {
+        // Type 1000 characters per frame
+        let html = "";
 
-            const span = document.createElement("span");
+        for (let j = 0; j < 1000 && i < text.length; j++) {
 
-            span.textContent = text[i];
+            const color = colors[Math.floor(Math.random() * colors.length)];
 
-            span.style.color = colors[Math.floor(Math.random() * colors.length)];
-
-            screen.appendChild(span);
+            html += `<span style="color:${color}">${text[i]}</span>`;
 
             i++;
         }
+
+        screen.insertAdjacentHTML("beforeend", html);
 
         screen.scrollTop = screen.scrollHeight;
 
@@ -57,12 +64,14 @@ setInterval(() => {
 
     document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 6000);
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
 
-}, 400);
+}, 300);
 
-// Twinkling Stars
-for (let i = 0; i < 120; i++) {
+// Stars
+for (let i = 0; i < 150; i++) {
 
     const star = document.createElement("div");
 
@@ -74,37 +83,35 @@ for (let i = 0; i < 120; i++) {
 
     star.style.top = Math.random() * 100 + "vh";
 
-    star.style.fontSize = (5 + Math.random() * 15) + "px";
+    star.style.fontSize = (5 + Math.random() * 12) + "px";
 
     document.body.appendChild(star);
 }
 
-// Celebration after typing
+// Fireworks after typing
 function startCelebration() {
 
-    // Play music
-    document.getElementById("music").play().catch(() => {});
-
-    // Fireworks
     setInterval(() => {
 
         const fire = document.createElement("div");
 
-        const emojis = ["🎆","🎇","✨","💥","🎉"];
+        const emoji = ["🎆", "🎇", "✨", "💥", "🎉", "🎊"];
 
-        fire.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        fire.innerHTML = emoji[Math.floor(Math.random() * emoji.length)];
 
         fire.style.position = "fixed";
 
         fire.style.left = Math.random() * 100 + "vw";
 
-        fire.style.top = Math.random() * 70 + "vh";
+        fire.style.top = Math.random() * 80 + "vh";
 
         fire.style.fontSize = (30 + Math.random() * 40) + "px";
 
         document.body.appendChild(fire);
 
-        setTimeout(() => fire.remove(), 1200);
+        setTimeout(() => {
+            fire.remove();
+        }, 1200);
 
-    }, 250);
+    }, 200);
 }
