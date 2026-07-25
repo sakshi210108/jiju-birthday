@@ -1,294 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Happy Birthday JIJU 🎂</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Screenshot Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<title>Happy Birthday JIJU ❤️</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<!-- =========================
-     MUSIC CONTROL
-========================= -->
+<!-- Stars -->
+<div id="stars"></div>
 
-<audio id="birthdayMusic" autoplay loop>
+<!-- Welcome Screen -->
+<div id="welcome">
+
+    <h1>🎉 A Special Birthday Surprise 🎉</h1>
+
+    <p>Someone has a gift waiting for you...</p>
+
+    <button id="startBtn">🎁 Open Gift</button>
+
+</div>
+
+<!-- Terminal -->
+<div id="terminal">
+
+    <div id="terminalHeader">
+
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+
+        <span>PyBirthdayWish Terminal</span>
+
+    </div>
+
+    <pre id="screen"></pre>
+
+</div>
+
+<!-- Audio -->
+<audio id="music" loop preload="auto">
     <source src="HappyBirthday.mp3" type="audio/mpeg">
 </audio>
 
-
-<!-- =========================
-     GALAXY BACKGROUND
-========================= -->
-
-<canvas id="galaxyCanvas"></canvas>
-
-
-<!-- =========================
-     WINDOWS BOOT SCREEN
-========================= -->
-
-<section id="bootScreen">
-
-    <div class="windows-logo">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-
-    <h2>Starting Birthday System...</h2>
-
-    <div class="loading-bar">
-        <span></span>
-    </div>
-
-    <p>
-        Loading JIJU Birthday Experience
-    </p>
-
-</section>
-
-
-
-<!-- =========================
-     MAIN WEBSITE
-========================= -->
-
-<main id="birthdayApp">
-
-
-<!-- =========================
-     TERMINAL INTRO
-========================= -->
-
-<section class="terminal">
-
-<div class="terminal-header">
-    PyBirthdayWish Terminal
-</div>
-
-
-<div class="terminal-body">
-
-<p id="terminalText"></p>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
-     ART TEXT DISPLAY
-========================= -->
-
-<section class="ascii-section">
-
-<pre id="asciiArt">
-Loading art.txt...
-</pre>
-
-</section>
-
-
-
-<!-- =========================
-     GIFT AREA
-========================= -->
-
-<section class="gift-area">
-
-
-<h1>
-A Special Gift For You 🎁
-</h1>
-
-
-<div class="gift-wrapper"
-     id="giftBox">
-
-
-    <div class="gift-box">
-
-        <div class="gift-lid">
-        </div>
-
-        <div class="gift-body">
-        </div>
-
-
-        <div class="ribbon vertical">
-        </div>
-
-        <div class="ribbon horizontal">
-        </div>
-
-
-    </div>
-
-
-</div>
-
-
-<button id="openGift">
-    Open Gift 🎁
-</button>
-
-
-</section>
-
-
-
-<!-- =========================
-     FIREWORK CANVAS
-========================= -->
-
-<canvas id="fireworkCanvas"></canvas>
-
-
-
-<!-- =========================
-     CELEBRATION EFFECTS
-========================= -->
-
-
-<div id="balloonContainer"></div>
-
-<div id="confettiContainer"></div>
-
-<div id="heartContainer"></div>
-
-
-
-<!-- =========================
-     FINAL MESSAGE
-========================= -->
-
-
-<section id="finalMessage">
-
-
-<h1>
-✨ Happy Birthday JIJU ✨
-</h1>
-
-
-<p>
-May your life always shine brighter than the galaxies.
-</p>
-
-
-<p>
-Wishing you endless happiness, success and unforgettable memories.
-</p>
-
-
-<div class="glow-text">
-    
-    HAVE A WONDERFUL BIRTHDAY ❤️
-
-</div>
-
-
-</section>
-
-
-
-<!-- =========================
-     SCREENSHOT BUTTON
-========================= -->
-
-
-<button id="screenshotBtn">
-
-📸 Save Birthday Moment
-
-</button>
-
-
-
-</main>
-
-
 <script src="script.js"></script>
 
-<!-- =========================
-     HIDDEN EFFECT LAYERS
-========================= -->
-
-<div id="stars"></div>
-
-<div id="shootingStars"></div>
-
-
-<!-- =========================
-     GIFT REVEAL MESSAGE
-========================= -->
-
-<section id="giftMessage">
-
-    <h2>
-        🎉 Surprise Unlocked 🎉
-    </h2>
-
-    <p>
-        A galaxy full of wishes just for you, JIJU!
-    </p>
-
-</section>
-
-
-
-<!-- =========================
-     MOBILE NOTICE
-========================= -->
-
-<div id="mobileMessage">
-
-    Rotate your device for the best experience 🌌
-
-</div>
-
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-    <p>
-        Made with ❤️ for JIJU's Birthday
-    </p>
-
-</footer>
-
-
-
-<script>
-
-/*
-    Prevent accidental context menu
-    for a cleaner birthday experience
-*/
-
-document.addEventListener(
-    "contextmenu",
-    function(e){
-        e.preventDefault();
-    }
-);
-
-
-</script>
-
-
 </body>
+
 </html>
