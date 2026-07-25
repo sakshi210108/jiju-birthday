@@ -1,25 +1,150 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-margin:0;
-background:#000;
-color:#fff;
-font-family:Consolas,monospace;
-overflow:hidden;
+    background:radial-gradient(circle,#101522,#000);
+    overflow:hidden;
+    font-family:Consolas,monospace;
 }
 
 #terminal{
-padding:20px;
-height:100vh;
-overflow:auto;
-white-space:pre;
-font-size:15px;
-line-height:15px;
-}
+    width:90%;
+    height:90vh;
+    margin:5vh auto;
 
-pre{
-margin:0;
+    background:rgba(0,0,0,.65);
+
+    border:2px solid #00ff99;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 0 20px #00ff99,
+    0 0 50px #00ff99;
+
+    overflow:auto;
+
+    padding:25px;
 }
 
 #screen{
-color:#ffffff;
+
+    white-space:pre;
+
+    font-size:15px;
+
+    line-height:15px;
+
+    animation:glow 2s infinite alternate;
+
+}
+
+@keyframes glow{
+
+from{
+
 text-shadow:0 0 5px white;
+
+}
+
+to{
+
+text-shadow:
+0 0 10px cyan,
+0 0 25px cyan,
+0 0 40px cyan;
+
+}
+
+}
+
+/* Hearts */
+
+.heart{
+
+position:fixed;
+
+bottom:-50px;
+
+font-size:30px;
+
+animation:fly 8s linear forwards;
+
+pointer-events:none;
+
+}
+
+@keyframes fly{
+
+from{
+
+transform:translateY(0) rotate(0deg);
+
+opacity:1;
+
+}
+
+to{
+
+transform:translateY(-120vh) rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+/* Stars */
+
+.star{
+
+position:fixed;
+
+color:white;
+
+animation:twinkle 2s infinite;
+
+}
+
+@keyframes twinkle{
+
+0%,100%{
+
+opacity:.2;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+}
+
+/* Cursor */
+
+.cursor{
+
+display:inline-block;
+
+width:10px;
+
+background:#00ff99;
+
+animation:blink 1s infinite;
+
+}
+
+@keyframes blink{
+
+50%{
+
+opacity:0;
+
+}
+
 }
