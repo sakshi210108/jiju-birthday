@@ -1,126 +1,52 @@
-const screen = document.getElementById("screen");
-const terminal = document.getElementById("terminal");
-const welcome = document.getElementById("welcome");
-const startBtn = document.getElementById("startBtn");
-const music = document.getElementById("music");
+function openGift() {
 
-const colors = [
-    "#00ff00",
-    "#00ffff",
-    "#ffff00",
-    "#ff66ff",
-    "#ff4444",
-    "#00aaff",
-    "#ffffff"
-];
+    const gift = document.getElementById("gift");
+    const message = document.getElementById("message");
 
-// Start everything when the gift is clicked
-startBtn.addEventListener("click", () => {
+    gift.classList.add("open");
 
-    welcome.style.display = "none";
-    terminal.style.display = "block";
+    setTimeout(() => {
 
-    music.play().catch(() => {});
+        message.classList.remove("hidden");
+        createConfetti();
 
-    startTyping();
+    }, 800);
 
-});
+}
 
-function startTyping(){
 
-    fetch("art.txt")
-    .then(response => response.text())
-    .then(text => {
 
-        let i = 0;
+function createConfetti() {
 
-        function type(){
+    const confettiBox = document.getElementById("confetti");
 
-            let html = "";
+    for (let i = 0; i < 150; i++) {
 
-            // Increase this number for even faster typing
-            for(let j=0;j<500 && i<text.length;j++){
+        const confetti = document.createElement("div");
 
-                const color = colors[Math.floor(Math.random()*colors.length)];
+        confetti.classList.add("confetti");
 
-                const ch = text[i];
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDelay = Math.random() * 3 + "s";
+        confetti.style.backgroundColor =
+            "hsl(" + Math.random() * 360 + ",100%,50%)";
 
-                if(ch === "\n"){
-                    html += "<br>";
-                }else if(ch === " "){
-                    html += "&nbsp;";
-                }else{
-                    html += `<span style="color:${color}">${ch}</span>`;
-                }
+        confettiBox.appendChild(confetti);
 
-                i++;
+    }
 
-            }
+}
 
-            screen.insertAdjacentHTML("beforeend", html);
 
-            terminal.scrollTop = terminal.scrollHeight;
+// Try to start music automatically
+window.addEventListener("load", () => {
 
-            if(i<text.length){
+    const music = document.getElementById("birthdaySong");
 
-                requestAnimationFrame(type);
+    music.volume = 0.7;
 
-            }else{
-
-                fireworks();
-
-            }
-
-        }
-
-        type();
-
+    music.play().catch(() => {
+        console.log("Browser blocked autoplay.");
     });
 
-}
-
-// Floating hearts
-setInterval(()=>{
-
-    const heart=document.createElement("div");
-
-    heart.className="heart";
-
-    heart.innerHTML="❤️";
-
-    heart.style.left=Math.random()*100+"vw";
-
-    heart.style.fontSize=(20+Math.random()*20)+"px";
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>heart.remove(),8000);
-
-},350);
-
-// Fireworks
-function fireworks(){
-
-    const emojis=["🎆","🎇","✨","🎉","💥","🎊"];
-
-    setInterval(()=>{
-
-        const fire=document.createElement("div");
-
-        fire.className="fire";
-
-        fire.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
-
-        fire.style.left=Math.random()*100+"vw";
-
-        fire.style.top=Math.random()*70+"vh";
-
-        fire.style.fontSize=(30+Math.random()*50)+"px";
-
-        document.body.appendChild(fire);
-
-        setTimeout(()=>fire.remove(),1200);
-
-    },250);
-
-}
+});
