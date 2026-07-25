@@ -1,55 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday JIJU ❤️</title>
 
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Happy Birthday JIJU ❤️</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+<!-- Animated Background -->
+<div id="background"></div>
 
 <!-- Stars -->
 <div id="stars"></div>
 
 <!-- Welcome Screen -->
-<div id="welcome">
+<section id="welcome">
 
-    <h1>🎉 A Special Birthday Surprise 🎉</h1>
+    <div id="giftContainer">
 
-    <p>Someone has a gift waiting for you...</p>
+        <div id="gift">
+            🎁
+        </div>
 
-    <button id="startBtn">🎁 Open Gift</button>
+        <h1>A Special Surprise</h1>
 
-</div>
-
-<!-- Terminal -->
-<div id="terminal">
-
-    <div id="terminalHeader">
-
-        <div class="dot red"></div>
-        <div class="dot yellow"></div>
-        <div class="dot green"></div>
-
-        <span>PyBirthdayWish Terminal</span>
+        <p>Click the Gift to Begin</p>
 
     </div>
 
-    <pre id="screen"></pre>
+</section>
+
+<!-- Boot Screen -->
+<section id="boot">
+
+<pre id="bootText">
+
+Microsoft Windows [Version 10.0]
+
+C:\Users\JIJU>
+
+Loading Birthday Surprise...
+
+</pre>
+
+</section>
+
+<!-- Terminal -->
+<section id="terminal">
+
+<div id="terminalHeader">
+
+<div class="dot red"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
+
+<span>PyBirthdayWish</span>
 
 </div>
 
-<!-- Audio -->
-<audio id="music" loop preload="auto">
-    <source src="HappyBirthday.mp3" type="audio/mpeg">
+<pre id="screen"></pre>
+
+</section>
+
+<!-- Final Message -->
+
+<section id="finalMessage">
+
+<h1>🎉 HAPPY BIRTHDAY JIJU 🎉</h1>
+
+<p>
+
+May your life always be filled with
+love, happiness,
+success and laughter.
+
+❤️ Have an Amazing Birthday ❤️
+
+</p>
+
+<button id="restart">
+
+🎁 Replay Surprise
+
+</button>
+
+</section>
+
+<!-- Music -->
+
+<audio id="music" loop>
+
+<source src="HappyBirthday.mp3" type="audio/mpeg">
+
 </audio>
+
+<!-- Canvas -->
+
+<canvas id="fireworks"></canvas>
 
 <script src="script.js"></script>
 
