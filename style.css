@@ -1,1216 +1,316 @@
-/* =========================================
-   GLOBAL SETTINGS
-========================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Consolas,monospace;
 }
 
-
-html,
-body {
-
-    width: 100%;
-    min-height: 100%;
-
-    overflow-x: hidden;
-
-    background: black;
-
-    color: white;
-
-}
-
-
-
-/* =========================================
-   GALAXY CANVAS
-========================================= */
-
-
-#galaxyCanvas {
-
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100vw;
-    height: 100vh;
-
-    z-index: -5;
-
-}
-
-
-
-/* =========================================
-   MUSIC PANEL
-========================================= */
-
-
-
-
-
-
-
-
-/* =========================================
-   WINDOWS BOOT SCREEN
-========================================= */
-
-
-#bootScreen {
-
-
-    position: fixed;
-
-    inset:0;
-
-    background:
-
-    radial-gradient(circle,
-    #222,
-    #000);
-
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-
-    z-index:5000;
-
-
-}
-
-
-
-.windows-logo {
-
-    width:100px;
-
-    height:100px;
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:6px;
-
-    margin-bottom:40px;
-
-}
-
-
-
-.windows-logo div {
-
-    background:white;
-
-    animation:pulseLogo 1.5s infinite alternate;
-
-}
-
-
-
-.windows-logo div:nth-child(2){
-
-    animation-delay:.2s;
-
-}
-
-
-.windows-logo div:nth-child(3){
-
-    animation-delay:.4s;
-
-}
-
-
-.windows-logo div:nth-child(4){
-
-    animation-delay:.6s;
-
-}
-
-
-
-@keyframes pulseLogo {
-
-    from {
-
-        opacity:.4;
-
-    }
-
-    to {
-
-        opacity:1;
-
-    }
-
-}
-
-
-
-#bootScreen h2 {
-
-    font-size:28px;
-
-    margin-bottom:25px;
-
-}
-
-
-
-.loading-bar {
-
-    width:300px;
-
-    height:10px;
-
-    background:#333;
-
-    border-radius:20px;
-
+body{
+    background:linear-gradient(180deg,#050816,#000);
     overflow:hidden;
-
+    color:white;
 }
 
-
-
-.loading-bar span {
-
-    display:block;
-
-    width:0%;
-
-    height:100%;
-
-    background:white;
-
-    animation:
-
-    bootLoad 3s forwards;
-
-}
-
-
-
-@keyframes bootLoad {
-
-
-    to {
-
-        width:100%;
-
-    }
-
-}
-
-
-
-/* =========================================
-   MAIN APP
-========================================= */
-
-
-#birthdayApp {
-
-    display:none;
-
-    min-height:100vh;
-
-    text-align:center;
-
-    padding:40px 20px;
-
-}/* =========================================
-   PYBIRTHDAYWISH TERMINAL
-========================================= */
-
-
-.terminal {
-
-    width:min(850px,90%);
-
-    margin:50px auto;
-
-    background:
-
-    rgba(0,0,0,0.75);
-
-    border:
-
-    2px solid rgba(0,255,100,0.5);
-
-    border-radius:15px;
-
-    overflow:hidden;
-
-    box-shadow:
-
-    0 0 30px rgba(0,255,100,0.4);
-
-}
-
-
-
-.terminal-header {
-
-    background:#111;
-
-    padding:15px;
-
-    text-align:left;
-
-    font-family:monospace;
-
-    color:#00ff88;
-
-    font-size:18px;
-
-}
-
-
-
-.terminal-body {
-
-    padding:25px;
-
-    min-height:180px;
-
-    text-align:left;
-
-    font-family:
-
-    "Courier New",
-    monospace;
-
-    color:#00ff88;
-
-    font-size:18px;
-
-    line-height:1.6;
-
-}
-
-
-
-#terminalText::after {
-
-    content:"_";
-
-    animation:
-
-    blink 0.7s infinite;
-
-}
-
-
-
-@keyframes blink {
-
-    50% {
-
-        opacity:0;
-
-    }
-
-}
-
-
-
-
-
-/* =========================================
-   ASCII ART AREA
-========================================= */
-
-
-.ascii-section {
-
-    margin:30px auto;
-
-    width:min(900px,90%);
-
-}
-
-
-
-#asciiArt {
-
-    font-family:
-
-    monospace;
-
-    font-size:
-
-    clamp(8px,2vw,18px);
-
-    color:#ffdd55;
-
-    text-shadow:
-
-    0 0 15px gold;
-
-}
-
-
-
-
-
-/* =========================================
-   GIFT AREA
-========================================= */
-
-
-.gift-area {
-
-    margin-top:80px;
-
-}
-
-
-
-.gift-area h1 {
-
-    font-size:
-
-    clamp(28px,5vw,50px);
-
-    margin-bottom:50px;
-
-    text-shadow:
-
-    0 0 20px pink;
-
-}
-
-
-
-
-
-.gift-wrapper {
-
-    width:220px;
-
-    height:220px;
-
-    margin:auto;
-
-    cursor:pointer;
-
-    perspective:1000px;
-
-}
-
-
-
-.gift-box {
-
-    width:160px;
-
-    height:140px;
-
-    position:relative;
-
-    margin:auto;
-
-    transform-style:preserve-3d;
-
-    transition:1s;
-
-}
-
-
-
-.gift-body {
-
-    position:absolute;
-
-    bottom:0;
-
-    width:160px;
-
-    height:120px;
-
-    background:
-
-    linear-gradient(
-    135deg,
-    #ff4b91,
-    #b30055
-    );
-
-    border-radius:10px;
-
-    box-shadow:
-
-    0 20px 40px rgba(0,0,0,.5);
-
-}
-
-
-
-.gift-lid {
-
-    position:absolute;
-
-    top:0;
-
-    width:170px;
-
-    height:35px;
-
-    left:-5px;
-
-    background:
-
-    linear-gradient(
-    135deg,
-    #ff78b5,
-    #ff0066
-    );
-
-    border-radius:8px;
-
-    transform-origin:
-
-    bottom;
-
-    transition:1.2s;
-
-}
-
-
-
-.gift-wrapper.open .gift-lid {
-
-    transform:
-
-    rotateX(120deg)
-
-    translateY(-40px);
-
-}
-
-
-
-.ribbon {
-
-    position:absolute;
-
-    background:#ffd700;
-
-}
-
-
-
-.ribbon.vertical {
-
-    width:25px;
-
-    height:140px;
-
-    left:68px;
-
-}
-
-
-
-.ribbon.horizontal {
-
-    width:160px;
-
-    height:25px;
-
-    top:55px;
-
-}
-
-
-
-
-
-#openGift {
-
-    margin-top:40px;
-
-    font-size:18px;
-
-}
-
-
-
-
-
-/* =========================================
-   GIFT MESSAGE
-========================================= */
-
-
-#giftMessage {
-
-    opacity:0;
-
-    transform:
-
-    translateY(50px);
-
-    transition:
-
-    1s;
-
-}
-
-
-
-#giftMessage.show {
-
-    opacity:1;
-
-    transform:
-
-    translateY(0);
-
-}/* =========================================
-   FIREWORK CANVAS
-========================================= */
-
-
-#fireworkCanvas {
-
+/* =======================
+        STARS
+======================= */
+
+#stars{
     position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    z-index:50;
-
-}
-
-
-
-/* =========================================
-   BALLOONS
-========================================= */
-
-
-#balloonContainer {
-
-    position:fixed;
-
-    bottom:0;
-
-    left:0;
-
     width:100%;
-
     height:100%;
+    background-image:
+    radial-gradient(white 1px,transparent 1px);
+    background-size:45px 45px;
+    animation:twinkle 3s infinite alternate;
+}
 
-    pointer-events:none;
+@keyframes twinkle{
 
-    overflow:hidden;
+from{
+opacity:.3;
+}
+
+to{
+opacity:1;
+}
 
 }
 
+/* =======================
+     WELCOME SCREEN
+======================= */
 
+#welcome{
 
-.balloon {
+position:absolute;
 
-    position:absolute;
+width:100%;
 
-    bottom:-150px;
+height:100%;
 
-    width:60px;
+display:flex;
 
-    height:75px;
+flex-direction:column;
 
-    border-radius:50%;
+justify-content:center;
 
-    animation:
+align-items:center;
 
-    floatBalloon 8s linear infinite;
-
-}
-
-
-
-.balloon::after {
-
-    content:"";
-
-    position:absolute;
-
-    bottom:-35px;
-
-    left:50%;
-
-    width:2px;
-
-    height:40px;
-
-    background:white;
+z-index:10;
 
 }
 
+#welcome h1{
 
+font-size:60px;
 
-@keyframes floatBalloon {
+text-shadow:
+0 0 20px hotpink,
+0 0 50px deeppink;
 
+margin-bottom:25px;
 
-    from {
-
-        transform:
-
-        translateY(0)
-
-        rotate(0deg);
-
-    }
-
-
-    to {
-
-        transform:
-
-        translateY(-120vh)
-
-        rotate(20deg);
-
-    }
+animation:glow 2s infinite alternate;
 
 }
 
+#welcome p{
 
+font-size:25px;
 
-
-/* =========================================
-   CONFETTI
-========================================= */
-
-
-#confettiContainer {
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    overflow:hidden;
+margin-bottom:40px;
 
 }
 
+#startBtn{
 
+padding:18px 45px;
 
-.confetti {
+font-size:28px;
 
-    position:absolute;
+border:none;
 
-    top:-20px;
+border-radius:60px;
 
-    width:10px;
+cursor:pointer;
 
-    height:20px;
+background:#ff4d6d;
 
-    animation:
+color:white;
 
-    confettiFall 5s linear infinite;
+transition:.3s;
 
-}
-
-
-
-@keyframes confettiFall {
-
-
-    from {
-
-        transform:
-
-        translateY(0)
-
-        rotate(0deg);
-
-    }
-
-
-    to {
-
-        transform:
-
-        translateY(110vh)
-
-        rotate(720deg);
-
-    }
+box-shadow:
+0 0 20px hotpink,
+0 0 40px hotpink;
 
 }
 
+#startBtn:hover{
 
+transform:scale(1.08);
 
-
-/* =========================================
-   FLOATING HEARTS
-========================================= */
-
-
-#heartContainer {
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
+background:#ff2d55;
 
 }
 
+/* =======================
+      TERMINAL
+======================= */
 
+#terminal{
 
-.heart {
+display:none;
 
-    position:absolute;
+width:92%;
 
-    bottom:-50px;
+height:90vh;
 
-    font-size:30px;
+margin:4vh auto;
 
-    animation:
+background:rgba(0,0,0,.75);
 
-    heartRise 6s linear infinite;
+border-radius:20px;
 
-}
+border:2px solid #00ff99;
 
+box-shadow:
+0 0 20px #00ff99,
+0 0 60px #00ff99;
 
+overflow:auto;
 
-@keyframes heartRise {
+position:relative;
 
-
-    from {
-
-        transform:
-
-        translateY(0)
-
-        scale(1);
-
-        opacity:1;
-
-    }
-
-
-    to {
-
-        transform:
-
-        translateY(-120vh)
-
-        scale(1.8);
-
-        opacity:0;
-
-    }
+z-index:20;
 
 }
 
+#terminalHeader{
 
+height:45px;
 
+display:flex;
 
-/* =========================================
-   FINAL MESSAGE
-========================================= */
+align-items:center;
 
+padding:12px;
 
-#finalMessage {
+background:#1c1c1c;
 
-    margin:100px auto;
-
-    padding:40px;
-
-    width:min(900px,90%);
-
-    background:
-
-    rgba(255,255,255,0.08);
-
-    border-radius:25px;
-
-    backdrop-filter:blur(12px);
-
-    box-shadow:
-
-    0 0 40px rgba(255,255,255,.3);
+border-radius:20px 20px 0 0;
 
 }
 
+.dot{
 
+width:14px;
 
-#finalMessage h1 {
+height:14px;
 
-    font-size:
+border-radius:50%;
 
-    clamp(35px,6vw,70px);
-
-    animation:
-
-    glow 2s infinite alternate;
+margin-right:8px;
 
 }
 
+.red{
+background:#ff5f56;
+}
 
+.yellow{
+background:#ffbd2e;
+}
 
-#finalMessage p {
+.green{
+background:#27c93f;
+}
 
-    margin-top:20px;
+#terminalHeader span{
 
-    font-size:20px;
+margin-left:12px;
+
+font-size:16px;
+
+color:#ddd;
 
 }
 
+#screen{
 
+padding:20px;
 
-.glow-text {
+white-space:pre;
 
-    margin-top:40px;
+font-size:15px;
 
-    font-size:
+line-height:15px;
 
-    clamp(25px,5vw,50px);
+color:#00ff99;
 
-    color:#fff;
-
-    text-shadow:
-
-    0 0 10px pink,
-
-    0 0 30px red,
-
-    0 0 60px purple;
+text-shadow:0 0 8px #00ff99;
 
 }
 
+/* =======================
+      FLOATING HEARTS
+======================= */
 
+.heart{
 
-@keyframes glow {
+position:fixed;
 
+bottom:-50px;
 
-    from {
+font-size:30px;
 
-        text-shadow:
+animation:floatHeart 8s linear forwards;
 
-        0 0 10px cyan;
+pointer-events:none;
 
-    }
-
-
-    to {
-
-        text-shadow:
-
-        0 0 40px pink;
-
-    }
+z-index:999;
 
 }
 
+@keyframes floatHeart{
 
+0%{
 
+transform:translateY(0) rotate(0deg);
 
-/* =========================================
-   SCREENSHOT BUTTON
-========================================= */
-
-
-#screenshotBtn {
-
-    margin:40px auto;
-
-    display:block;
-
-    font-size:18px;
+opacity:1;
 
 }
 
+100%{
 
+transform:translateY(-120vh) rotate(360deg);
 
-
-
-/* =========================================
-   FOOTER
-========================================= */
-
-
-footer {
-
-    padding:30px;
-
-    opacity:.8;
-
-    font-size:16px;
-
-}/* =========================================
-   MOBILE RESPONSIVE DESIGN
-========================================= */
-
-
-@media (max-width:768px){
-
-
-    .music-panel {
-
-        top:10px;
-
-        right:10px;
-
-        flex-direction:column;
-
-    }
-
-
-    .music-panel button {
-
-        padding:10px 15px;
-
-        font-size:14px;
-
-    }
-
-
-
-    #bootScreen h2 {
-
-        font-size:20px;
-
-        text-align:center;
-
-        padding:0 20px;
-
-    }
-
-
-
-    .loading-bar {
-
-        width:220px;
-
-    }
-
-
-
-    .terminal {
-
-        margin-top:100px;
-
-    }
-
-
-
-    .terminal-body {
-
-        font-size:14px;
-
-        padding:15px;
-
-    }
-
-
-
-    .ascii-section {
-
-        overflow-x:auto;
-
-    }
-
-
-
-    .gift-wrapper {
-
-        transform:scale(.85);
-
-    }
-
-
-
-    .gift-area h1 {
-
-        font-size:32px;
-
-    }
-
-
-
-    #finalMessage {
-
-        padding:25px 15px;
-
-    }
-
-
-
-    #finalMessage p {
-
-        font-size:16px;
-
-    }
-
-
-
-    .balloon {
-
-        width:45px;
-
-        height:60px;
-
-    }
-
-
+opacity:0;
 
 }
 
+}
 
+/* =======================
+        FIREWORKS
+======================= */
 
-/* =========================================
-   VERY SMALL DEVICES
-========================================= */
+.fire{
 
+position:fixed;
 
-@media (max-width:400px){
+font-size:45px;
 
+pointer-events:none;
 
-    .gift-wrapper {
+z-index:999;
 
-        transform:
-
-        scale(.7);
-
-    }
-
-
-
-    .terminal-header {
-
-        font-size:14px;
-
-    }
-
-
-
-    .glow-text {
-
-        font-size:24px;
-
-    }
-
+animation:boom 1.2s linear forwards;
 
 }
 
+@keyframes boom{
 
+0%{
 
-/* =========================================
-   SMOOTH EFFECTS
-========================================= */
+transform:scale(.2);
 
-
-button {
-
-    user-select:none;
+opacity:1;
 
 }
 
+100%{
 
+transform:scale(2);
 
-section {
-
-    animation:
-
-    fadeIn 1.5s ease;
+opacity:0;
 
 }
 
+}
 
+/* =======================
+       GLOW
+======================= */
 
-@keyframes fadeIn {
+@keyframes glow{
 
+from{
 
-    from {
-
-        opacity:0;
-
-        transform:
-
-        translateY(30px);
-
-    }
-
-
-    to {
-
-        opacity:1;
-
-        transform:
-
-        translateY(0);
-
-    }
+text-shadow:
+0 0 10px hotpink,
+0 0 30px hotpink;
 
 }
 
+to{
 
-
-/* =========================================
-   HIDE MOBILE MESSAGE
-========================================= */
-
-
-#mobileMessage {
-
-    display:none;
+text-shadow:
+0 0 20px deeppink,
+0 0 60px deeppink;
 
 }
-
-
-
-@media (orientation:portrait)
-and (max-width:500px){
-
-
-    #mobileMessage {
-
-        display:block;
-
-        position:fixed;
-
-        bottom:10px;
-
-        left:50%;
-
-        transform:
-
-        translateX(-50%);
-
-        background:
-
-        rgba(0,0,0,.7);
-
-        padding:10px 20px;
-
-        border-radius:20px;
-
-        font-size:12px;
-
-        z-index:3000;
-
-    }
 
 }
