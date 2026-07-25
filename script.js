@@ -1,3 +1,4 @@
+alert("JavaScript Loaded");
 const screen = document.getElementById("screen");
 const terminal = document.getElementById("terminal");
 const welcome = document.getElementById("welcome");
