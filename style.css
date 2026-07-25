@@ -1,0 +1,25 @@
+body{
+margin:0;
+background:#000;
+color:#fff;
+font-family:Consolas,monospace;
+overflow:hidden;
+}
+
+#terminal{
+padding:20px;
+height:100vh;
+overflow:auto;
+white-space:pre;
+font-size:15px;
+line-height:15px;
+}
+
+pre{
+margin:0;
+}
+
+#screen{
+color:#ffffff;
+text-shadow:0 0 5px white;
+}
