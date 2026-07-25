@@ -5,146 +5,151 @@
 }
 
 body{
-    background:radial-gradient(circle,#101522,#000);
-    overflow:hidden;
-    font-family:Consolas,monospace;
+    background:linear-gradient(135deg,#090909,#1b0d2f,#000);
+    font-family:'Poppins',sans-serif;
+    color:white;
+    overflow-x:hidden;
+    min-height:100vh;
 }
 
-#terminal{
+.container{
     width:90%;
-    height:90vh;
-    margin:5vh auto;
+    max-width:1200px;
+    margin:auto;
+    text-align:center;
+    padding:40px 20px;
+}
 
-    background:rgba(0,0,0,.65);
+h1{
+    font-size:3rem;
+    color:#ffd700;
+    text-shadow:0 0 10px gold,0 0 20px orange;
+    animation:glow 2s infinite alternate;
+}
 
-    border:2px solid #00ff99;
+h2{
+    margin-top:10px;
+    color:#ff66b2;
+    font-weight:400;
+}
 
-    border-radius:20px;
+button{
+    margin-top:35px;
+    padding:18px 40px;
+    border:none;
+    border-radius:50px;
+    background:#ff2d75;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 0 20px #ff2d75;
+}
 
-    box-shadow:
-    0 0 20px #00ff99,
-    0 0 50px #00ff99;
+button:hover{
+    transform:scale(1.08);
+    background:#ff4d94;
+    box-shadow:0 0 35px #ff2d75;
+}
+
+.hidden{
+    display:none;
+}
+
+#message{
+    margin-top:40px;
+    animation:fadeIn 2s;
+}
+
+pre{
+    text-align:left;
+    display:inline-block;
+    background:rgba(255,255,255,.06);
+    padding:25px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.15);
+
+    color:#00ffcc;
 
     overflow:auto;
 
-    padding:25px;
+    font-size:11px;
+    line-height:1.1;
+
+    text-shadow:
+    0 0 5px cyan,
+    0 0 10px cyan;
 }
 
-#screen{
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-image:
+    radial-gradient(white 1px,transparent 1px),
+    radial-gradient(white 1px,transparent 1px);
 
-    white-space:pre;
+    background-size:50px 50px;
+    background-position:0 0,25px 25px;
 
-    font-size:15px;
-
-    line-height:15px;
-
-    animation:glow 2s infinite alternate;
-
+    animation:moveStars 40s linear infinite;
+    opacity:.4;
+    z-index:-1;
 }
 
 @keyframes glow{
 
 from{
-
-text-shadow:0 0 5px white;
-
+text-shadow:0 0 10px gold;
 }
 
 to{
-
 text-shadow:
-0 0 10px cyan,
-0 0 25px cyan,
-0 0 40px cyan;
-
+0 0 20px gold,
+0 0 40px orange,
+0 0 60px yellow;
 }
 
 }
 
-/* Hearts */
-
-.heart{
-
-position:fixed;
-
-bottom:-50px;
-
-font-size:30px;
-
-animation:fly 8s linear forwards;
-
-pointer-events:none;
-
-}
-
-@keyframes fly{
+@keyframes fadeIn{
 
 from{
-
-transform:translateY(0) rotate(0deg);
-
-opacity:1;
-
+opacity:0;
+transform:translateY(40px);
 }
 
 to{
-
-transform:translateY(-120vh) rotate(360deg);
-
-opacity:0;
-
-}
-
-}
-
-/* Stars */
-
-.star{
-
-position:fixed;
-
-color:white;
-
-animation:twinkle 2s infinite;
-
-}
-
-@keyframes twinkle{
-
-0%,100%{
-
-opacity:.2;
-
-}
-
-50%{
-
 opacity:1;
-
+transform:translateY(0);
 }
 
 }
 
-/* Cursor */
+@keyframes moveStars{
 
-.cursor{
+from{
+transform:translateY(0);
+}
 
-display:inline-block;
-
-width:10px;
-
-background:#00ff99;
-
-animation:blink 1s infinite;
+to{
+transform:translateY(-600px);
+}
 
 }
 
-@keyframes blink{
+@media(max-width:768px){
 
-50%{
+pre{
+font-size:6px;
+}
 
-opacity:0;
+h1{
+font-size:2rem;
+}
 
+button{
+width:90%;
 }
 
 }
