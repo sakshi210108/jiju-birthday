@@ -5,9 +5,10 @@
 }
 
 body{
-    background:linear-gradient(135deg,#090909,#1b0d2f,#000);
-    font-family:'Poppins',sans-serif;
+    background:#000000;
     color:white;
+    font-family:'Poppins',sans-serif;
+    margin:0;
     overflow-x:hidden;
     min-height:100vh;
 }
@@ -62,23 +63,37 @@ button:hover{
 }
 
 pre{
-    text-align:left;
     display:inline-block;
-    background:rgba(255,255,255,.06);
-    padding:25px;
-    border-radius:15px;
-    border:1px solid rgba(255,255,255,.15);
+    text-align:left;
 
-    color:#00ffcc;
-
-    overflow:auto;
+    padding:20px;
 
     font-size:11px;
     line-height:1.1;
 
-    text-shadow:
-    0 0 5px cyan,
-    0 0 10px cyan;
+    white-space:pre;
+
+    color:transparent;
+
+    background:linear-gradient(
+        90deg,
+        #ff0000,
+        #ff8800,
+        #ffff00,
+        #00ff00,
+        #00ffff,
+        #0088ff,
+        #aa00ff,
+        #ff00aa,
+        #ff0000
+    );
+
+    background-size:400%;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    animation:rainbow 8s linear infinite;
 }
 
 .stars{
@@ -150,6 +165,16 @@ font-size:2rem;
 
 button{
 width:90%;
+}
+
+@keyframes rainbow{
+
+0%{
+background-position:0%;
+}
+
+100%{
+background-position:400%;
 }
 
 }
