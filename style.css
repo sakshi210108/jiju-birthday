@@ -1,316 +1,1262 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Consolas,monospace;
+/* =========================================
+   GLOBAL SETTINGS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
-body{
-    background:linear-gradient(180deg,#050816,#000);
-    overflow:hidden;
+
+html,
+body {
+
+    width: 100%;
+    min-height: 100%;
+
+    overflow-x: hidden;
+
+    background: black;
+
+    color: white;
+
+}
+
+
+
+/* =========================================
+   GALAXY CANVAS
+========================================= */
+
+
+#galaxyCanvas {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    z-index: -5;
+
+}
+
+
+
+/* =========================================
+   MUSIC PANEL
+========================================= */
+
+
+.music-panel {
+
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 1000;
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+.music-panel button,
+#screenshotBtn,
+#openGift {
+
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    background: rgba(255,255,255,0.15);
+
     color:white;
+
+    backdrop-filter: blur(10px);
+
+    transition:0.3s;
+
 }
 
-/* =======================
-        STARS
-======================= */
 
-#stars{
-    position:fixed;
-    width:100%;
+.music-panel button:hover,
+#screenshotBtn:hover,
+#openGift:hover {
+
+    transform: scale(1.08);
+
+    background: rgba(255,255,255,0.35);
+
+}
+
+
+
+/* =========================================
+   WINDOWS BOOT SCREEN
+========================================= */
+
+
+#bootScreen {
+
+
+    position: fixed;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle,
+    #222,
+    #000);
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    z-index:5000;
+
+
+}
+
+
+
+.windows-logo {
+
+    width:100px;
+
+    height:100px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:6px;
+
+    margin-bottom:40px;
+
+}
+
+
+
+.windows-logo div {
+
+    background:white;
+
+    animation:pulseLogo 1.5s infinite alternate;
+
+}
+
+
+
+.windows-logo div:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+
+.windows-logo div:nth-child(3){
+
+    animation-delay:.4s;
+
+}
+
+
+.windows-logo div:nth-child(4){
+
+    animation-delay:.6s;
+
+}
+
+
+
+@keyframes pulseLogo {
+
+    from {
+
+        opacity:.4;
+
+    }
+
+    to {
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+#bootScreen h2 {
+
+    font-size:28px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.loading-bar {
+
+    width:300px;
+
+    height:10px;
+
+    background:#333;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+
+
+.loading-bar span {
+
+    display:block;
+
+    width:0%;
+
     height:100%;
-    background-image:
-    radial-gradient(white 1px,transparent 1px);
-    background-size:45px 45px;
-    animation:twinkle 3s infinite alternate;
-}
 
-@keyframes twinkle{
+    background:white;
 
-from{
-opacity:.3;
-}
+    animation:
 
-to{
-opacity:1;
-}
+    bootLoad 3s forwards;
 
 }
 
-/* =======================
-     WELCOME SCREEN
-======================= */
 
-#welcome{
 
-position:absolute;
+@keyframes bootLoad {
 
-width:100%;
 
-height:100%;
+    to {
 
-display:flex;
+        width:100%;
 
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
-z-index:10;
+    }
 
 }
 
-#welcome h1{
 
-font-size:60px;
 
-text-shadow:
-0 0 20px hotpink,
-0 0 50px deeppink;
+/* =========================================
+   MAIN APP
+========================================= */
 
-margin-bottom:25px;
 
-animation:glow 2s infinite alternate;
+#birthdayApp {
 
-}
+    display:none;
 
-#welcome p{
+    min-height:100vh;
 
-font-size:25px;
+    text-align:center;
 
-margin-bottom:40px;
+    padding:40px 20px;
 
-}
+}/* =========================================
+   PYBIRTHDAYWISH TERMINAL
+========================================= */
 
-#startBtn{
 
-padding:18px 45px;
+.terminal {
 
-font-size:28px;
+    width:min(850px,90%);
 
-border:none;
+    margin:50px auto;
 
-border-radius:60px;
+    background:
 
-cursor:pointer;
+    rgba(0,0,0,0.75);
 
-background:#ff4d6d;
+    border:
 
-color:white;
+    2px solid rgba(0,255,100,0.5);
 
-transition:.3s;
+    border-radius:15px;
 
-box-shadow:
-0 0 20px hotpink,
-0 0 40px hotpink;
+    overflow:hidden;
 
-}
+    box-shadow:
 
-#startBtn:hover{
-
-transform:scale(1.08);
-
-background:#ff2d55;
+    0 0 30px rgba(0,255,100,0.4);
 
 }
 
-/* =======================
-      TERMINAL
-======================= */
 
-#terminal{
 
-display:none;
+.terminal-header {
 
-width:92%;
+    background:#111;
 
-height:90vh;
+    padding:15px;
 
-margin:4vh auto;
+    text-align:left;
 
-background:rgba(0,0,0,.75);
+    font-family:monospace;
 
-border-radius:20px;
+    color:#00ff88;
 
-border:2px solid #00ff99;
-
-box-shadow:
-0 0 20px #00ff99,
-0 0 60px #00ff99;
-
-overflow:auto;
-
-position:relative;
-
-z-index:20;
+    font-size:18px;
 
 }
 
-#terminalHeader{
 
-height:45px;
 
-display:flex;
+.terminal-body {
 
-align-items:center;
+    padding:25px;
 
-padding:12px;
+    min-height:180px;
 
-background:#1c1c1c;
+    text-align:left;
 
-border-radius:20px 20px 0 0;
+    font-family:
 
-}
+    "Courier New",
+    monospace;
 
-.dot{
+    color:#00ff88;
 
-width:14px;
+    font-size:18px;
 
-height:14px;
-
-border-radius:50%;
-
-margin-right:8px;
+    line-height:1.6;
 
 }
 
-.red{
-background:#ff5f56;
-}
 
-.yellow{
-background:#ffbd2e;
-}
 
-.green{
-background:#27c93f;
-}
+#terminalText::after {
 
-#terminalHeader span{
+    content:"_";
 
-margin-left:12px;
+    animation:
 
-font-size:16px;
-
-color:#ddd;
+    blink 0.7s infinite;
 
 }
 
-#screen{
 
-padding:20px;
 
-white-space:pre;
+@keyframes blink {
 
-font-size:15px;
+    50% {
 
-line-height:15px;
+        opacity:0;
 
-color:#00ff99;
-
-text-shadow:0 0 8px #00ff99;
+    }
 
 }
 
-/* =======================
-      FLOATING HEARTS
-======================= */
 
-.heart{
 
-position:fixed;
 
-bottom:-50px;
 
-font-size:30px;
+/* =========================================
+   ASCII ART AREA
+========================================= */
 
-animation:floatHeart 8s linear forwards;
 
-pointer-events:none;
+.ascii-section {
 
-z-index:999;
+    margin:30px auto;
+
+    width:min(900px,90%);
 
 }
 
-@keyframes floatHeart{
 
-0%{
 
-transform:translateY(0) rotate(0deg);
+#asciiArt {
 
-opacity:1;
+    font-family:
 
-}
+    monospace;
 
-100%{
+    font-size:
 
-transform:translateY(-120vh) rotate(360deg);
+    clamp(8px,2vw,18px);
 
-opacity:0;
+    color:#ffdd55;
 
-}
+    text-shadow:
 
-}
-
-/* =======================
-        FIREWORKS
-======================= */
-
-.fire{
-
-position:fixed;
-
-font-size:45px;
-
-pointer-events:none;
-
-z-index:999;
-
-animation:boom 1.2s linear forwards;
+    0 0 15px gold;
 
 }
 
-@keyframes boom{
 
-0%{
 
-transform:scale(.2);
 
-opacity:1;
 
-}
+/* =========================================
+   GIFT AREA
+========================================= */
 
-100%{
 
-transform:scale(2);
+.gift-area {
 
-opacity:0;
+    margin-top:80px;
 
 }
 
-}
 
-/* =======================
-       GLOW
-======================= */
 
-@keyframes glow{
+.gift-area h1 {
 
-from{
+    font-size:
 
-text-shadow:
-0 0 10px hotpink,
-0 0 30px hotpink;
+    clamp(28px,5vw,50px);
 
-}
+    margin-bottom:50px;
 
-to{
+    text-shadow:
 
-text-shadow:
-0 0 20px deeppink,
-0 0 60px deeppink;
+    0 0 20px pink;
 
 }
+
+
+
+
+
+.gift-wrapper {
+
+    width:220px;
+
+    height:220px;
+
+    margin:auto;
+
+    cursor:pointer;
+
+    perspective:1000px;
+
+}
+
+
+
+.gift-box {
+
+    width:160px;
+
+    height:140px;
+
+    position:relative;
+
+    margin:auto;
+
+    transform-style:preserve-3d;
+
+    transition:1s;
+
+}
+
+
+
+.gift-body {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:160px;
+
+    height:120px;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #ff4b91,
+    #b30055
+    );
+
+    border-radius:10px;
+
+    box-shadow:
+
+    0 20px 40px rgba(0,0,0,.5);
+
+}
+
+
+
+.gift-lid {
+
+    position:absolute;
+
+    top:0;
+
+    width:170px;
+
+    height:35px;
+
+    left:-5px;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #ff78b5,
+    #ff0066
+    );
+
+    border-radius:8px;
+
+    transform-origin:
+
+    bottom;
+
+    transition:1.2s;
+
+}
+
+
+
+.gift-wrapper.open .gift-lid {
+
+    transform:
+
+    rotateX(120deg)
+
+    translateY(-40px);
+
+}
+
+
+
+.ribbon {
+
+    position:absolute;
+
+    background:#ffd700;
+
+}
+
+
+
+.ribbon.vertical {
+
+    width:25px;
+
+    height:140px;
+
+    left:68px;
+
+}
+
+
+
+.ribbon.horizontal {
+
+    width:160px;
+
+    height:25px;
+
+    top:55px;
+
+}
+
+
+
+
+
+#openGift {
+
+    margin-top:40px;
+
+    font-size:18px;
+
+}
+
+
+
+
+
+/* =========================================
+   GIFT MESSAGE
+========================================= */
+
+
+#giftMessage {
+
+    opacity:0;
+
+    transform:
+
+    translateY(50px);
+
+    transition:
+
+    1s;
+
+}
+
+
+
+#giftMessage.show {
+
+    opacity:1;
+
+    transform:
+
+    translateY(0);
+
+}/* =========================================
+   FIREWORK CANVAS
+========================================= */
+
+
+#fireworkCanvas {
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:50;
+
+}
+
+
+
+/* =========================================
+   BALLOONS
+========================================= */
+
+
+#balloonContainer {
+
+    position:fixed;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+}
+
+
+
+.balloon {
+
+    position:absolute;
+
+    bottom:-150px;
+
+    width:60px;
+
+    height:75px;
+
+    border-radius:50%;
+
+    animation:
+
+    floatBalloon 8s linear infinite;
+
+}
+
+
+
+.balloon::after {
+
+    content:"";
+
+    position:absolute;
+
+    bottom:-35px;
+
+    left:50%;
+
+    width:2px;
+
+    height:40px;
+
+    background:white;
+
+}
+
+
+
+@keyframes floatBalloon {
+
+
+    from {
+
+        transform:
+
+        translateY(0)
+
+        rotate(0deg);
+
+    }
+
+
+    to {
+
+        transform:
+
+        translateY(-120vh)
+
+        rotate(20deg);
+
+    }
+
+}
+
+
+
+
+/* =========================================
+   CONFETTI
+========================================= */
+
+
+#confettiContainer {
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+}
+
+
+
+.confetti {
+
+    position:absolute;
+
+    top:-20px;
+
+    width:10px;
+
+    height:20px;
+
+    animation:
+
+    confettiFall 5s linear infinite;
+
+}
+
+
+
+@keyframes confettiFall {
+
+
+    from {
+
+        transform:
+
+        translateY(0)
+
+        rotate(0deg);
+
+    }
+
+
+    to {
+
+        transform:
+
+        translateY(110vh)
+
+        rotate(720deg);
+
+    }
+
+}
+
+
+
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+
+#heartContainer {
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+
+
+.heart {
+
+    position:absolute;
+
+    bottom:-50px;
+
+    font-size:30px;
+
+    animation:
+
+    heartRise 6s linear infinite;
+
+}
+
+
+
+@keyframes heartRise {
+
+
+    from {
+
+        transform:
+
+        translateY(0)
+
+        scale(1);
+
+        opacity:1;
+
+    }
+
+
+    to {
+
+        transform:
+
+        translateY(-120vh)
+
+        scale(1.8);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+
+/* =========================================
+   FINAL MESSAGE
+========================================= */
+
+
+#finalMessage {
+
+    margin:100px auto;
+
+    padding:40px;
+
+    width:min(900px,90%);
+
+    background:
+
+    rgba(255,255,255,0.08);
+
+    border-radius:25px;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+
+    0 0 40px rgba(255,255,255,.3);
+
+}
+
+
+
+#finalMessage h1 {
+
+    font-size:
+
+    clamp(35px,6vw,70px);
+
+    animation:
+
+    glow 2s infinite alternate;
+
+}
+
+
+
+#finalMessage p {
+
+    margin-top:20px;
+
+    font-size:20px;
+
+}
+
+
+
+.glow-text {
+
+    margin-top:40px;
+
+    font-size:
+
+    clamp(25px,5vw,50px);
+
+    color:#fff;
+
+    text-shadow:
+
+    0 0 10px pink,
+
+    0 0 30px red,
+
+    0 0 60px purple;
+
+}
+
+
+
+@keyframes glow {
+
+
+    from {
+
+        text-shadow:
+
+        0 0 10px cyan;
+
+    }
+
+
+    to {
+
+        text-shadow:
+
+        0 0 40px pink;
+
+    }
+
+}
+
+
+
+
+/* =========================================
+   SCREENSHOT BUTTON
+========================================= */
+
+
+#screenshotBtn {
+
+    margin:40px auto;
+
+    display:block;
+
+    font-size:18px;
+
+}
+
+
+
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+
+footer {
+
+    padding:30px;
+
+    opacity:.8;
+
+    font-size:16px;
+
+}/* =========================================
+   MOBILE RESPONSIVE DESIGN
+========================================= */
+
+
+@media (max-width:768px){
+
+
+    .music-panel {
+
+        top:10px;
+
+        right:10px;
+
+        flex-direction:column;
+
+    }
+
+
+    .music-panel button {
+
+        padding:10px 15px;
+
+        font-size:14px;
+
+    }
+
+
+
+    #bootScreen h2 {
+
+        font-size:20px;
+
+        text-align:center;
+
+        padding:0 20px;
+
+    }
+
+
+
+    .loading-bar {
+
+        width:220px;
+
+    }
+
+
+
+    .terminal {
+
+        margin-top:100px;
+
+    }
+
+
+
+    .terminal-body {
+
+        font-size:14px;
+
+        padding:15px;
+
+    }
+
+
+
+    .ascii-section {
+
+        overflow-x:auto;
+
+    }
+
+
+
+    .gift-wrapper {
+
+        transform:scale(.85);
+
+    }
+
+
+
+    .gift-area h1 {
+
+        font-size:32px;
+
+    }
+
+
+
+    #finalMessage {
+
+        padding:25px 15px;
+
+    }
+
+
+
+    #finalMessage p {
+
+        font-size:16px;
+
+    }
+
+
+
+    .balloon {
+
+        width:45px;
+
+        height:60px;
+
+    }
+
+
+
+}
+
+
+
+/* =========================================
+   VERY SMALL DEVICES
+========================================= */
+
+
+@media (max-width:400px){
+
+
+    .gift-wrapper {
+
+        transform:
+
+        scale(.7);
+
+    }
+
+
+
+    .terminal-header {
+
+        font-size:14px;
+
+    }
+
+
+
+    .glow-text {
+
+        font-size:24px;
+
+    }
+
+
+}
+
+
+
+/* =========================================
+   SMOOTH EFFECTS
+========================================= */
+
+
+button {
+
+    user-select:none;
+
+}
+
+
+
+section {
+
+    animation:
+
+    fadeIn 1.5s ease;
+
+}
+
+
+
+@keyframes fadeIn {
+
+
+    from {
+
+        opacity:0;
+
+        transform:
+
+        translateY(30px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:
+
+        translateY(0);
+
+    }
+
+}
+
+
+
+/* =========================================
+   HIDE MOBILE MESSAGE
+========================================= */
+
+
+#mobileMessage {
+
+    display:none;
+
+}
+
+
+
+@media (orientation:portrait)
+and (max-width:500px){
+
+
+    #mobileMessage {
+
+        display:block;
+
+        position:fixed;
+
+        bottom:10px;
+
+        left:50%;
+
+        transform:
+
+        translateX(-50%);
+
+        background:
+
+        rgba(0,0,0,.7);
+
+        padding:10px 20px;
+
+        border-radius:20px;
+
+        font-size:12px;
+
+        z-index:3000;
+
+    }
 
 }
