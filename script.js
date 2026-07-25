@@ -32,7 +32,7 @@ i++;
 
 screen.scrollTop=screen.scrollHeight;
 
-setTimeout(type,1);
+setTimeout(type,0);
 
 }
 
