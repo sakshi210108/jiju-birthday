@@ -1,76 +1,126 @@
 const screen = document.getElementById("screen");
+const terminal = document.getElementById("terminal");
+const welcome = document.getElementById("welcome");
+const startBtn = document.getElementById("startBtn");
+const music = document.getElementById("music");
 
-// Play music
-window.onload = () => {
-    document.getElementById("music").play().catch(() => {});
-};
+const colors = [
+    "#00ff00",
+    "#00ffff",
+    "#ffff00",
+    "#ff66ff",
+    "#ff4444",
+    "#00aaff",
+    "#ffffff"
+];
 
-// Load the ASCII art
-fetch("art.txt")
-.then(response => response.text())
-.then(text => {
+// Start everything when the gift is clicked
+startBtn.addEventListener("click", () => {
 
-    // Show the entire ASCII art instantly
-    screen.textContent = text;
+    welcome.style.display = "none";
+    terminal.style.display = "block";
 
-    // Start celebration immediately
-    startCelebration();
+    music.play().catch(() => {});
+
+    startTyping();
+
 });
 
-// Floating Hearts
-setInterval(() => {
+function startTyping(){
 
-    const heart = document.createElement("div");
+    fetch("art.txt")
+    .then(response => response.text())
+    .then(text => {
 
-    heart.className = "heart";
+        let i = 0;
 
-    heart.innerHTML = "❤️";
+        function type(){
 
-    heart.style.left = Math.random() * 100 + "vw";
+            let html = "";
+
+            // Increase this number for even faster typing
+            for(let j=0;j<500 && i<text.length;j++){
+
+                const color = colors[Math.floor(Math.random()*colors.length)];
+
+                const ch = text[i];
+
+                if(ch === "\n"){
+                    html += "<br>";
+                }else if(ch === " "){
+                    html += "&nbsp;";
+                }else{
+                    html += `<span style="color:${color}">${ch}</span>`;
+                }
+
+                i++;
+
+            }
+
+            screen.insertAdjacentHTML("beforeend", html);
+
+            terminal.scrollTop = terminal.scrollHeight;
+
+            if(i<text.length){
+
+                requestAnimationFrame(type);
+
+            }else{
+
+                fireworks();
+
+            }
+
+        }
+
+        type();
+
+    });
+
+}
+
+// Floating hearts
+setInterval(()=>{
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.fontSize=(20+Math.random()*20)+"px";
 
     document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 5000);
+    setTimeout(()=>heart.remove(),8000);
 
-}, 300);
-
-// Stars
-for (let i = 0; i < 150; i++) {
-
-    const star = document.createElement("div");
-
-    star.className = "star";
-
-    star.innerHTML = "✦";
-
-    star.style.left = Math.random() * 100 + "vw";
-
-    star.style.top = Math.random() * 100 + "vh";
-
-    star.style.fontSize = (5 + Math.random() * 12) + "px";
-
-    document.body.appendChild(star);
-}
+},350);
 
 // Fireworks
-function startCelebration() {
+function fireworks(){
 
-    setInterval(() => {
+    const emojis=["🎆","🎇","✨","🎉","💥","🎊"];
 
-        const fire = document.createElement("div");
+    setInterval(()=>{
 
-        const emoji = ["🎆","🎇","✨","💥","🎉","🎊"];
+        const fire=document.createElement("div");
 
-        fire.innerHTML = emoji[Math.floor(Math.random() * emoji.length)];
+        fire.className="fire";
 
-        fire.style.position = "fixed";
-        fire.style.left = Math.random() * 100 + "vw";
-        fire.style.top = Math.random() * 80 + "vh";
-        fire.style.fontSize = (30 + Math.random() * 40) + "px";
+        fire.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+        fire.style.left=Math.random()*100+"vw";
+
+        fire.style.top=Math.random()*70+"vh";
+
+        fire.style.fontSize=(30+Math.random()*50)+"px";
 
         document.body.appendChild(fire);
 
-        setTimeout(() => fire.remove(), 1200);
+        setTimeout(()=>fire.remove(),1200);
 
-    }, 200);
+    },250);
+
 }
