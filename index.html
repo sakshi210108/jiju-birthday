@@ -1,58 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday ❤️</title>
 
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Happy Birthday JIJU ❤️</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- Stars -->
-<div id="stars"></div>
+    <!-- Background Music -->
+    <audio id="birthdaySong" autoplay loop>
+        <source src="HappyBirthday.mp3" type="audio/mp3">
+    </audio>
 
-<!-- Welcome Screen -->
-<div id="welcome">
+    <div class="container">
 
-    <h1>🎉 A Special Birthday Surprise 🎉</h1>
+        <h1>🎉 Happy Birthday 🎉</h1>
 
-    <p>Someone has a gift waiting for you...</p>
+        <p class="intro">
+            Wishing you a day filled with happiness, smiles and beautiful memories ❤️
+        </p>
 
-    <button id="startBtn">🎁 Open Gift</button>
+        <div class="gift" id="gift">
+            🎁
+        </div>
 
-</div>
+        <button onclick="openGift()">Open Gift 🎁</button>
 
-<!-- Terminal -->
-<div id="terminal">
+        <div id="message" class="hidden">
+            <h2>🎂 Surprise! 🎂</h2>
+            <p>
+                May your life always be full of joy, success and endless happiness.
+                Have an amazing birthday! ❤️
+            </p>
 
-    <div id="terminalHeader">
-
-        <div class="dot red"></div>
-        <div class="dot yellow"></div>
-        <div class="dot green"></div>
-
-        <span>PyBirthdayWish Terminal</span>
+            <div class="cake">
+                🎂
+            </div>
+        </div>
 
     </div>
 
-    <pre id="screen"></pre>
 
-</div>
+    <div id="confetti"></div>
 
-<!-- Audio -->
-<audio id="music" loop preload="auto">
-    <source src="HappyBirthday.mp3" type="audio/mpeg">
-</audio>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
-
 </html>
