@@ -9,11 +9,15 @@ ascii.textContent = "";
 button.addEventListener("click", () => {
 
     button.style.display = "none";
-
     message.classList.remove("hidden");
 
-    // Play music (if birthday.mp3 exists)
-    music.play().catch(() => {});
+    // Play music
+    music.currentTime = 0;
+    music.volume = 0.6;
+
+    music.play()
+        .then(() => console.log("Music Playing"))
+        .catch(err => console.error("Music Error:", err));
 
     // Typing effect
     let i = 0;
@@ -22,53 +26,17 @@ button.addEventListener("click", () => {
         if (i < originalText.length) {
             ascii.textContent += originalText.charAt(i);
             i++;
-            setTimeout(type, 1); // Increase to 5-10 for slower typing
+            setTimeout(type, 1);
         }
     }
 
     type();
 
-    // Confetti burst
+    // Confetti
     confetti({
         particleCount: 250,
         spread: 180,
         origin: { y: 0.6 }
     });
-
-    // Fireworks for 8 seconds
-    const duration = 8000;
-    const end = Date.now() + duration;
-
-    const interval = setInterval(() => {
-
-        confetti({
-            particleCount: 40,
-            angle: 60,
-            spread: 60,
-            origin: { x: 0 }
-        });
-
-        confetti({
-            particleCount: 40,
-            angle: 120,
-            spread: 60,
-            origin: { x: 1 }
-        });
-
-        confetti({
-            particleCount: 60,
-            spread: 360,
-            ticks: 80,
-            origin: {
-                x: Math.random(),
-                y: Math.random() * 0.6
-            }
-        });
-
-        if (Date.now() > end) {
-            clearInterval(interval);
-        }
-
-    }, 500);
 
 });
