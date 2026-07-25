@@ -1,61 +1,150 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-
-margin:0;
-
-background:#000;
-
-overflow:hidden;
-
-font-family:Consolas,monospace;
-
+    background:radial-gradient(circle,#101522,#000);
+    overflow:hidden;
+    font-family:Consolas,monospace;
 }
 
 #terminal{
+    width:90%;
+    height:90vh;
+    margin:5vh auto;
 
-padding:20px;
+    background:rgba(0,0,0,.65);
 
-white-space:pre;
+    border:2px solid #00ff99;
 
-color:#00ff00;
+    border-radius:20px;
 
-font-size:15px;
+    box-shadow:
+    0 0 20px #00ff99,
+    0 0 50px #00ff99;
 
-line-height:15px;
+    overflow:auto;
 
-overflow:auto;
+    padding:25px;
+}
 
-height:100vh;
+#screen{
+
+    white-space:pre;
+
+    font-size:15px;
+
+    line-height:15px;
+
+    animation:glow 2s infinite alternate;
 
 }
 
-pre{
+@keyframes glow{
 
-margin:0;
+from{
 
-white-space:pre;
-
-}
-
-::-webkit-scrollbar{
-
-width:8px;
+text-shadow:0 0 5px white;
 
 }
 
-::-webkit-scrollbar-thumb{
+to{
 
-background:#00ff00;
+text-shadow:
+0 0 10px cyan,
+0 0 25px cyan,
+0 0 40px cyan;
 
 }
 
-canvas{
+}
+
+/* Hearts */
+
+.heart{
 
 position:fixed;
 
-top:0;
+bottom:-50px;
 
-left:0;
+font-size:30px;
+
+animation:fly 8s linear forwards;
 
 pointer-events:none;
+
+}
+
+@keyframes fly{
+
+from{
+
+transform:translateY(0) rotate(0deg);
+
+opacity:1;
+
+}
+
+to{
+
+transform:translateY(-120vh) rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+/* Stars */
+
+.star{
+
+position:fixed;
+
+color:white;
+
+animation:twinkle 2s infinite;
+
+}
+
+@keyframes twinkle{
+
+0%,100%{
+
+opacity:.2;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+}
+
+/* Cursor */
+
+.cursor{
+
+display:inline-block;
+
+width:10px;
+
+background:#00ff99;
+
+animation:blink 1s infinite;
+
+}
+
+@keyframes blink{
+
+50%{
+
+opacity:0;
+
+}
 
 }
